@@ -1,0 +1,1 @@
+http://javaonlineguide.net/2015/07/spring-4-mvc-restful-webservice-example-without-maven.html
