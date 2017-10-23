@@ -11,15 +11,26 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		- Location of the XML file that defines the root application context.
 		- Applied by ContextLoaderListener.
 	-->
-<!--     <context-param>
+    <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:spring/application-config.xml</param-value>
-    </context-param> -->
+        <param-value>/WEB-INF/spring/*.xml</param-value>
+    </context-param>
 
-<!--     <listener>
+    <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener> -->
+    </listener>
     
+    <filter>
+		<filter-name>springSessionRepositoryFilter</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>springSessionRepositoryFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>ERROR</dispatcher>
+	</filter-mapping>
+	
 	<filter>
 	 	<filter-name>encodingFilter</filter-name>
 	 	<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -54,5 +65,4 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
         <servlet-name>dispatcherServlet</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
-
 </web-app>
