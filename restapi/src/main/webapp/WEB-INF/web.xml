@@ -16,7 +16,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
      <!-- Context Loader가 load할 수 있는 설정파일을 여러개 사용한다. -->
     <context-param>
 	    <param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/controller-*.xml</param-value>
+		<param-value>/WEB-INF/*-context.xml</param-value>
 	</context-param>
     
     
