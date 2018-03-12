@@ -1,23 +1,25 @@
 package com.anbr.restapi.controller;
 
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 @RestController
-@RequestMapping("/hello")
 public class HelloWorldService {
+	String message = "Welcome to Spring MVC!";
 
-	@RequestMapping
-	public String helloMethod1(@RequestParam(value = "name", defaultValue = "World") String name) {
-		return "Hello  " + name;
-	}
 
-	@RequestMapping(value = "/{firstName}/{lastName}", method = RequestMethod.GET)
-	public String helloMethod2(@PathVariable String firstName, @PathVariable String lastName) {
-		return "Hello " + firstName + " " + lastName;
-	}
-
+	@RequestMapping("/hello")
+    public ModelAndView showMessage(
+            @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
+        System.out.println("in controller");
+  
+        ModelAndView mv = new ModelAndView("helloworld");
+        mv.addObject("message", message);
+        mv.addObject("name", name);
+        return mv;
+    }
 }
+
+
